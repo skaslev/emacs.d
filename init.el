@@ -5,6 +5,7 @@
   `(if (string-match "windows" (prin1-to-string system-type)) (progn ,@x)))
 
 (server-start)
+(remove-hook 'kill-buffer-query-functions 'server-kill-buffer-query-function)
 
 (menu-bar-mode -1)
 (tool-bar-mode -1)
@@ -37,8 +38,8 @@
 (defun setup-frame (frame)
   (select-frame frame)
   (on-linux (set-frame-parameter frame 'font-backend '(xft x))
-            (set-default-font "Inconsolata-19")) ; "Bitstream Vera Sans Mono-13"
-  (on-windows (set-default-font "-*-Consolas-normal-r-*-*-18-*-*-*-c-*-*-iso8859-1"))
+            (set-frame-font "Inconsolata-19")) ; "Bitstream Vera Sans Mono-13"
+  (on-windows (set-frame-font "-*-Consolas-normal-r-*-*-18-*-*-*-c-*-*-iso8859-1"))
   (maximize-frame))
 
 (add-hook 'after-make-frame-functions 'setup-frame)
