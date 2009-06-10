@@ -52,8 +52,6 @@
 (which-func-mode 1)
 (line-number-mode 1)
 (column-number-mode 1)
-(blink-cursor-mode 1)
-;; (global-hl-line-mode 1)
 (transient-mark-mode 1)
 (dynamic-completion-mode 1)
 (auto-compression-mode 1)
@@ -114,7 +112,7 @@
 (require 'zenburn)
 (color-theme-zenburn)
 
-;; (require 'htmlize)
+(require 'htmlize)
 
 (load "haskell-site-file")
 (autoload 'cg-mode  "cg-mode"  "Cg editing mode." t)
