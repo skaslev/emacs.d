@@ -1,4 +1,3 @@
-;;; $Id: maxframe.el 435 2007-08-24 15:40:58Z ryan $
 ;; maximize the emacs frame based on display size
 
 ;; Copyright (C) 2007 Ryan McGeary
