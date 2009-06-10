@@ -220,7 +220,7 @@
    (setq lua-indent-level 4)))
 
 ;; NOTE This doesn't work when done in python-mode-hook
-(setq python-python-command "python3.0")
+(setq python-python-command "python3")
 
 ;; Cygwin setup
 (on-windows
