@@ -1,8 +1,10 @@
-(defmacro on-linux (&rest x)
-  `(if (string-match "linux" (prin1-to-string system-type)) (progn ,@x)))
+(defmacro on-linux (&rest body)
+  (when (string-match "linux" (prin1-to-string system-type))
+    `(progn ,@body)))
 
-(defmacro on-windows (&rest x)
-  `(if (string-match "windows" (prin1-to-string system-type)) (progn ,@x)))
+(defmacro on-windows (&rest body)
+  (when (string-match "windows" (prin1-to-string system-type))
+    `(progn ,@body)))
 
 (server-start)
 (remove-hook 'kill-buffer-query-functions 'server-kill-buffer-query-function)
