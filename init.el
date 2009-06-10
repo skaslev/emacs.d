@@ -19,7 +19,8 @@
 (setq load-path
       (append load-path
               '("~/.emacs.d"
-                "~/.emacs.d/haskell-mode-2.4"
+                "~/.emacs.d/progmodes"
+                "~/.emacs.d/progmodes/haskell-mode-2.4"
                 "~/.emacs.d/color-theme-6.6.0")))
 
 (global-set-key (kbd "C-+") 'text-scale-increase)
