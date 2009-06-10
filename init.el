@@ -233,4 +233,4 @@
  (setq shell-file-name "bash.exe")
  (setq explicit-shell-file-name "bash.exe"))
 
-(message ".emacs loaded successfully.")
+(message "init.el loaded successfully.")
