@@ -36,9 +36,8 @@
 
 (global-set-key (kbd "<f11>") 'toggle-fullscreen)
 
-(require 'maxframe)
-
 (defun setup-frame (frame)
+  (require 'maxframe)
   (select-frame frame)
   (on-linux (set-frame-parameter frame 'font-backend '(xft x))
             (set-frame-font "Inconsolata-19")) ; "Bitstream Vera Sans Mono-13"
@@ -87,10 +86,7 @@
 (require 'uniquify)
 (setq uniquify-buffer-name-style 'post-forward-angle-brackets)
 
-(require 'linum)
 (global-set-key (kbd "C-c n") 'linum-mode)
-
-(require 'whitespace)
 (global-set-key (kbd "C-c w") 'whitespace-mode)
 
 (require 'smooth-scrolling)
@@ -120,15 +116,13 @@
 
 ;; (require 'htmlize)
 
-(require 'doc-view)
-
 (load "haskell-site-file")
-(autoload 'mma-mode "mma.el"   "Mathematica package file mode" t)
-(autoload 'rsl-mode "rsl-mode" "RenderMan Shading Language editing mode" t)
-(autoload 'rib-mode "rib-mode" "RenderMan Interface Bytestream editing mode" t)
 (autoload 'cg-mode  "cg-mode"  "Cg editing mode." t)
 (autoload 'mel-mode "mel-mode" "Mel editting mode." t)
 (autoload 'lua-mode "lua-mode" "Lua editting mode." t)
+(autoload 'mma-mode "mma.el"   "Mathematica package file mode" t)
+(autoload 'rsl-mode "rsl-mode" "RenderMan Shading Language editing mode" t)
+(autoload 'rib-mode "rib-mode" "RenderMan Interface Bytestream editing mode" t)
 
 (setq lua-default-application "lua5.1")
 
