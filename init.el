@@ -90,7 +90,7 @@
 (global-set-key (kbd "C-c w") 'whitespace-mode)
 
 (require 'smooth-scrolling)
-(setq smooth-scroll-margin 15)
+(setq smooth-scroll-margin 10)
 
 (require 'pager)
 (global-set-key (kbd "C-v") 'pager-page-down)
