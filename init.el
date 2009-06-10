@@ -40,7 +40,7 @@
   (select-frame frame)
   (on-linux (set-frame-parameter frame 'font-backend '(xft x))
             (set-frame-font "Inconsolata-19")) ; "Bitstream Vera Sans Mono-13"
-  (on-windows (set-frame-font "-*-Consolas-normal-r-*-*-18-*-*-*-c-*-*-iso8859-1"))
+  (on-windows (set-frame-font "-*-Consolas-normal-r-*-*-22-*-*-*-c-*-*-iso8859-1"))
   (maximize-frame))
 
 (add-hook 'after-make-frame-functions 'setup-frame)
