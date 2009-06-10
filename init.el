@@ -88,8 +88,8 @@
 (require 'linum)
 (global-set-key (kbd "C-c n") 'linum-mode)
 
-(require 'blank-mode)
-(global-set-key (kbd "C-c w") 'blank-mode)
+(require 'whitespace)
+(global-set-key (kbd "C-c w") 'whitespace-mode)
 
 (require 'smooth-scrolling)
 (setq smooth-scroll-margin 15)
