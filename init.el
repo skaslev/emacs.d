@@ -101,9 +101,6 @@
 (global-set-key (kbd "C-/") 'undo)
 (global-set-key (kbd "C-?") 'redo)
 
-(require 'goto-last-change)
-(global-set-key (kbd "C-x C-/") 'goto-last-change)
-
 (require 'color-theme)
 (color-theme-initialize)
 
