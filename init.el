@@ -120,6 +120,7 @@
 (autoload 'rsl-mode "rsl-mode" "RenderMan Shading Language editing mode" t)
 (autoload 'rib-mode "rib-mode" "RenderMan Interface Bytestream editing mode" t)
 
+(setq python-python-command "python3")
 (setq lua-default-application "lua5.1")
 
 (setq auto-mode-alist
@@ -208,9 +209,6 @@
  'lua-mode-hook
  (lambda ()
    (setq lua-indent-level 4)))
-
-;; NOTE This doesn't work when done in python-mode-hook
-(setq python-python-command "python3")
 
 ;; Cygwin setup
 (on-windows
