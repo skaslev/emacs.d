@@ -121,21 +121,19 @@
 (setq lua-default-application "lua5.1")
 
 (setq auto-mode-alist
-      (append '(("\\.cs$"      . c++-mode)
-                ("\\.cg$"      . cg-mode)
-                ("\\.hlsl$"    . cg-mode)
-                ("\\.fxh?$"    . cg-mode)
-                ("\\.[gr]?sl$" . rsl-mode)
-                ("\\.rib$"     . rib-mode)
-                ("\\.pyg?$"    . python-mode)
-                ("\\.ma$"      . mel-mode)
-                ("\\.mel$"     . mel-mode)
-                ("\\.ss$"      . scheme-mode)
-                ("\\.lua$"     . lua-mode)
-                ("\\.hs$"      . haskell-mode)
-                ("\\.lhs$"     . literate-haskell-mode)
-                ("\\.m$"       . mma-mode)
-                ("\\.org$"     . org-mode))
+      (append '(("\\.cs$"   . c++-mode)
+                ("\\.cg$"   . cg-mode)
+                ("\\.hlsl$" . cg-mode)
+                ("\\.fxh?$" . cg-mode)
+                ("\\.sl$"   . rsl-mode)
+                ("\\.rib$"  . rib-mode)
+                ("\\.ma$"   . mel-mode)
+                ("\\.mel$"  . mel-mode)
+                ("\\.lua$"  . lua-mode)
+                ("\\.hs$"   . haskell-mode)
+                ("\\.lhs$"  . literate-haskell-mode)
+                ("\\.m$"    . mma-mode)
+                ("\\.org$"  . org-mode))
               auto-mode-alist))
 
 (add-hook
@@ -188,8 +186,7 @@
    (setq tab-width 4)
    (turn-on-haskell-indent)
    (turn-on-haskell-doc-mode)
-   (turn-on-haskell-decl-scan)
-   (turn-on-haskell-ghci)))
+   (turn-on-haskell-decl-scan)))
 
 (add-hook
  'mel-mode-hook
