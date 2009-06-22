@@ -53,7 +53,7 @@
 (transient-mark-mode 1)
 (dynamic-completion-mode 1)
 (auto-compression-mode 1)
-(global-font-lock-mode nil)
+(global-font-lock-mode 0)
 (global-auto-revert-mode 1)
 
 (fset 'yes-or-no-p 'y-or-n-p)
@@ -151,7 +151,7 @@
 (add-hook
  'python-mode-hook
  (lambda ()
-   (font-lock-mode nil)))
+   (font-lock-mode 0)))
 
 (add-hook
  'c-mode-hook
