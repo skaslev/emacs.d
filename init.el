@@ -53,7 +53,7 @@
 (transient-mark-mode 1)
 (dynamic-completion-mode 1)
 (auto-compression-mode 1)
-(global-font-lock-mode 1)
+(global-font-lock-mode nil)
 (global-auto-revert-mode 1)
 
 (fset 'yes-or-no-p 'y-or-n-p)
@@ -101,11 +101,11 @@
 (global-set-key (kbd "C-/") 'undo)
 (global-set-key (kbd "C-?") 'redo)
 
-(require 'color-theme)
-(color-theme-initialize)
+;; (require 'color-theme)
+;; (color-theme-initialize)
 
-(require 'zenburn)
-(color-theme-zenburn)
+;; (require 'zenburn)
+;; (color-theme-zenburn)
 
 (require 'htmlize)
 
@@ -146,6 +146,11 @@
  'shell-mode-hook
  (lambda ()
    (ansi-color-for-comint-mode-on)))
+
+(add-hook
+ 'python-mode-hook
+ (lambda ()
+   (font-lock-mode nil)))
 
 (add-hook
  'c-mode-hook
