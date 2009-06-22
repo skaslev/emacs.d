@@ -147,6 +147,7 @@
  (lambda ()
    (ansi-color-for-comint-mode-on)))
 
+;; HACK python-mode ignores global-font-lock-mode
 (add-hook
  'python-mode-hook
  (lambda ()
