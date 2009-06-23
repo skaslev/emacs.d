@@ -136,6 +136,11 @@
                 ("\\.org$"  . org-mode))
               auto-mode-alist))
 
+;; Respect global-font-lock, please.
+(defun font-lock-off () (font-lock-mode 0))
+(add-hook 'python-mode-hook     'font-lock-off)
+(add-hook 'whitespace-mode-hook 'font-lock-off)
+
 (add-hook
  'text-mode-hook
  (lambda ()
@@ -146,12 +151,6 @@
  'shell-mode-hook
  (lambda ()
    (ansi-color-for-comint-mode-on)))
-
-;; HACK python-mode ignores global-font-lock-mode
-(add-hook
- 'python-mode-hook
- (lambda ()
-   (font-lock-mode 0)))
 
 (add-hook
  'c-mode-hook
