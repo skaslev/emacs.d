@@ -101,11 +101,11 @@
 (global-set-key (kbd "C-/") 'undo)
 (global-set-key (kbd "C-?") 'redo)
 
-;; (require 'color-theme)
-;; (color-theme-initialize)
+(require 'color-theme)
+(color-theme-initialize)
 
-;; (require 'zenburn)
-;; (color-theme-zenburn)
+(require 'zenburn)
+(color-theme-zenburn)
 
 (require 'htmlize)
 
