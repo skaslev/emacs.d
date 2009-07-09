@@ -74,6 +74,7 @@
 (setq default-major-mode 'text-mode)
 (setq-default tab-width 8)
 (setq-default indent-tabs-mode nil)
+(setq-default ispell-program-name "aspell")
 
 (require 'psvn)
 (require 'git)
@@ -162,6 +163,7 @@
 (add-hook
  'c++-mode-hook
  (lambda ()
+   (setq tab-width 4)
    (c-add-style
     "my-c++-style"
     '((c-basic-offset . 4)
