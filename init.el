@@ -145,6 +145,7 @@
 (add-hook
  'text-mode-hook
  (lambda ()
+   (flyspell-mode 1)
    (auto-fill-mode 1)
    (setq fill-column 80)))
 
