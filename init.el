@@ -60,6 +60,7 @@
 (setq inhibit-startup-message t)
 (setq visible-bell t)
 (setq bell-volume 0)
+(setq scroll-step 1)
 (setq case-fold-search t)
 (setq make-backup-files nil)
 (setq mouse-yank-at-point t)
@@ -85,9 +86,6 @@
 
 (global-set-key (kbd "C-c n") 'linum-mode)
 (global-set-key (kbd "C-c w") 'whitespace-mode)
-
-(require 'smooth-scrolling)
-(setq smooth-scroll-margin 10)
 
 (require 'pager)
 (global-set-key (kbd "C-v") 'pager-page-down)
