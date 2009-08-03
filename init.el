@@ -77,10 +77,6 @@
 (setq-default indent-tabs-mode nil)
 (setq-default ispell-program-name "aspell")
 
-(require 'psvn)
-(require 'git)
-(require 'git-blame)
-
 (require 'uniquify)
 (setq uniquify-buffer-name-style 'post-forward-angle-brackets)
 
