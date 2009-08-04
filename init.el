@@ -133,6 +133,11 @@
 (add-hook 'python-mode-hook     'font-lock-off)
 (add-hook 'whitespace-mode-hook 'font-lock-off)
 
+;; Switch to *Python* after C-c C-c
+(defadvice python-send-buffer
+  (after advice-switch-to-python)
+  (python-switch-to-python t))
+
 (add-hook
  'text-mode-hook
  (lambda ()
