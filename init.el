@@ -120,8 +120,6 @@
                 ("\\.ma$"   . mel-mode)
                 ("\\.mel$"  . mel-mode)
                 ("\\.lua$"  . lua-mode)
-                ("\\.hs$"   . haskell-mode)
-                ("\\.lhs$"  . literate-haskell-mode)
                 ("\\.m$"    . mma-mode)
                 ("\\.org$"  . org-mode))
               auto-mode-alist))
