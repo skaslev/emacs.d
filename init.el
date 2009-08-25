@@ -35,12 +35,14 @@
 (global-set-key (kbd "<f11>") 'toggle-fullscreen)
 
 (defun setup-frame (frame)
-  (require 'maxframe)
   (select-frame frame)
-  (on-linux (set-frame-parameter frame 'font-backend '(xft x))
-            (set-frame-font "Inconsolata 19")) ; "Bitstream Vera Sans Mono 15"
-  (on-windows (set-frame-font "-*-Consolas-normal-r-*-*-22-*-*-*-c-*-*-iso8859-1"))
-  (maximize-frame))
+  (on-linux
+   (set-frame-font "Inconsolata 19")
+   (toggle-fullscreen))
+  (on-windows
+   (set-frame-font "-*-Consolas-normal-r-*-*-22-*-*-*-c-*-*-iso8859-1")
+   (require 'maxframe)
+   (maximize-frame)))
 
 (add-hook 'after-make-frame-functions 'setup-frame)
 (add-hook 'window-setup-hook (lambda () (setup-frame (selected-frame))))
@@ -106,9 +108,6 @@
 (autoload 'mma-mode "mma.el"   "Mathematica package file mode" t)
 (autoload 'rsl-mode "rsl-mode" "RenderMan Shading Language editing mode" t)
 (autoload 'rib-mode "rib-mode" "RenderMan Interface Bytestream editing mode" t)
-
-(setq python-python-command "python3")
-(setq lua-default-application "lua5.1")
 
 (setq auto-mode-alist
       (append '(("\\.cs$"   . c++-mode)
