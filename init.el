@@ -35,14 +35,11 @@
 (global-set-key (kbd "<f11>") 'toggle-fullscreen)
 
 (defun setup-frame (frame)
+  (require 'maxframe)
   (select-frame frame)
-  (on-linux
-   (set-frame-font "Inconsolata 19")
-   (toggle-fullscreen))
-  (on-windows
-   (set-frame-font "-*-Consolas-normal-r-*-*-22-*-*-*-c-*-*-iso8859-1")
-   (require 'maxframe)
-   (maximize-frame)))
+  (on-linux (set-frame-font "Inconsolata 19"))
+  (on-windows (set-frame-font "-*-Consolas-normal-r-*-*-22-*-*-*-c-*-*-iso8859-1"))
+  (maximize-frame))
 
 (add-hook 'after-make-frame-functions 'setup-frame)
 (add-hook 'window-setup-hook (lambda () (setup-frame (selected-frame))))
@@ -54,7 +51,7 @@
 (column-number-mode 1)
 (dynamic-completion-mode 1)
 (auto-compression-mode 1)
-(global-font-lock-mode 0)
+(global-font-lock-mode 1)
 (global-auto-revert-mode 1)
 
 (fset 'yes-or-no-p 'y-or-n-p)
@@ -122,11 +119,6 @@
                 ("\\.m$"    . mma-mode)
                 ("\\.org$"  . org-mode))
               auto-mode-alist))
-
-;; Respect global-font-lock, please.
-(defun font-lock-off () (font-lock-mode 0))
-(add-hook 'python-mode-hook     'font-lock-off)
-(add-hook 'whitespace-mode-hook 'font-lock-off)
 
 ;; Switch to *Python* after C-c C-c
 (defadvice python-send-buffer
