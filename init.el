@@ -99,6 +99,7 @@
 (require 'htmlize)
 
 (load "haskell-site-file")
+(autoload 'go-mode  "go-mode"  "Go editing mode." t)
 (autoload 'cg-mode  "cg-mode"  "Cg editing mode." t)
 (autoload 'mel-mode "mel-mode" "Mel editting mode." t)
 (autoload 'lua-mode "lua-mode" "Lua editting mode." t)
@@ -107,7 +108,8 @@
 (autoload 'rib-mode "rib-mode" "RenderMan Interface Bytestream editing mode" t)
 
 (setq auto-mode-alist
-      (append '(("\\.cs$"   . c++-mode)
+      (append '(("\\.go$"   . go-mode)
+                ("\\.cs$"   . c++-mode)
                 ("\\.cg$"   . cg-mode)
                 ("\\.hlsl$" . cg-mode)
                 ("\\.fxh?$" . cg-mode)
