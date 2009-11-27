@@ -73,6 +73,7 @@
 (setq-default tab-width 8)
 (setq-default indent-tabs-mode nil)
 (setq-default ispell-program-name "aspell")
+(setq-default grep-find-command "find . -type f | grep -v '.svn' | xargs grep -nH -e ")
 
 (require 'uniquify)
 (setq uniquify-buffer-name-style 'post-forward-angle-brackets)
@@ -195,6 +196,8 @@
 (add-hook
  'lua-mode-hook
  (lambda ()
+   (setq tab-width 4)
+   (setq indent-tabs-mode t)
    (setq lua-indent-level 4)))
 
 ;; Cygwin setup
