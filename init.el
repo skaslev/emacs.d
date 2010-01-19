@@ -114,7 +114,7 @@
                 ("\\.cg$"   . cg-mode)
                 ("\\.hlsl$" . cg-mode)
                 ("\\.fxh?$" . cg-mode)
-                ("\\.sl$"   . rsl-mode)
+                ("\\.o?sl$" . rsl-mode)
                 ("\\.rib$"  . rib-mode)
                 ("\\.ma$"   . mel-mode)
                 ("\\.mel$"  . mel-mode)
