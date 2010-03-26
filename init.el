@@ -83,6 +83,7 @@
 (setq scroll-step 1)
 (setq case-fold-search t)
 (setq make-backup-files nil)
+(setq parens-require-spaces nil)
 (setq x-select-enable-primary t)
 (setq x-select-enable-clipboard t)
 (setq dired-recursive-deletes 'top)
