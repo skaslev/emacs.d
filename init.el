@@ -6,16 +6,6 @@
   (when (string-match "windows" (prin1-to-string system-type))
     `(progn ,@body)))
 
-(server-start)
-(remove-hook 'kill-buffer-query-functions 'server-kill-buffer-query-function)
-
-(menu-bar-mode 0)
-(tool-bar-mode 0)
-(scroll-bar-mode 0)
-
-(setq current-language-environment "Bulgarian")
-(setq default-input-method "bulgarian-phonetic")
-
 (setq load-path
       (append load-path
               '("~/.emacs.d"
@@ -23,14 +13,61 @@
                 "~/.emacs.d/progmodes/haskell-mode-2.4"
                 "~/.emacs.d/color-theme-6.6.0")))
 
+(server-start)
+
+(defun setup-frame (frame)
+  (require 'maxframe)
+  (select-frame frame)
+  (on-linux (set-frame-font "Inconsolata 19"))
+  (on-windows (set-frame-font "-*-Consolas-normal-r-*-*-22-*-*-*-c-*-*-iso8859-1"))
+  (maximize-frame))
+
+(add-hook 'after-make-frame-functions 'setup-frame)
+(add-hook 'window-setup-hook (lambda () (setup-frame (selected-frame))))
+(remove-hook 'kill-buffer-query-functions 'server-kill-buffer-query-function)
+
+(ido-mode 1)
+(menu-bar-mode 0)
+(tool-bar-mode 0)
+(scroll-bar-mode 0)
+(show-paren-mode 1)
+(which-func-mode 1)
+(line-number-mode 1)
+(column-number-mode 1)
+(dynamic-completion-mode 1)
+(auto-compression-mode 1)
+(global-font-lock-mode 1)
+(global-auto-revert-mode 1)
+(windmove-default-keybindings)
+
+(fset 'yes-or-no-p 'y-or-n-p)
+(setq inhibit-startup-message t)
+(setq visible-bell t)
+(setq bell-volume 0)
+(setq scroll-step 1)
+(setq case-fold-search t)
+(setq make-backup-files nil)
+(setq windmove-wrap-around t)
+(setq parens-require-spaces nil)
+(setq x-select-enable-primary t)
+(setq x-select-enable-clipboard t)
+(setq dired-recursive-deletes 'top)
+(setq ido-enable-flex-matching t)
+
+(setq default-major-mode 'text-mode)
+(setq-default tab-width 8)
+(setq-default indent-tabs-mode nil)
+(setq-default ispell-program-name "aspell")
+(setq current-language-environment "Bulgarian")
+(setq default-input-method "bulgarian-phonetic")
+(setq-default grep-find-command "find . -type f | grep -v '.svn' | xargs grep -nH -e ")
+
 (global-set-key (kbd "C-+") 'text-scale-increase)
 (global-set-key (kbd "C-=") 'text-scale-increase)
 (global-set-key (kbd "C--") 'text-scale-decrease)
 
 (global-set-key (kbd "C-c n") 'linum-mode)
 (global-set-key (kbd "C-c w") 'whitespace-mode)
-
-(windmove-default-keybindings)
 
 (defun swap-windows ()
   "If you have 2 windows, it swaps them."
@@ -57,48 +94,6 @@
                        (if (frame-parameter nil 'fullscreen) nil 'fullboth)))
 
 (global-set-key (kbd "<f11>") 'toggle-fullscreen)
-
-(defun setup-frame (frame)
-  (require 'maxframe)
-  (select-frame frame)
-  (on-linux (set-frame-font "Inconsolata 19"))
-  (on-windows (set-frame-font "-*-Consolas-normal-r-*-*-22-*-*-*-c-*-*-iso8859-1"))
-  (maximize-frame))
-
-(add-hook 'after-make-frame-functions 'setup-frame)
-(add-hook 'window-setup-hook (lambda () (setup-frame (selected-frame))))
-
-(ido-mode 1)
-(show-paren-mode 1)
-(which-func-mode 1)
-(line-number-mode 1)
-(column-number-mode 1)
-(dynamic-completion-mode 1)
-(auto-compression-mode 1)
-(global-font-lock-mode 1)
-(global-auto-revert-mode 1)
-
-(fset 'yes-or-no-p 'y-or-n-p)
-(setq inhibit-startup-message t)
-(setq visible-bell t)
-(setq bell-volume 0)
-(setq scroll-step 1)
-(setq case-fold-search t)
-(setq make-backup-files nil)
-(setq parens-require-spaces nil)
-(setq x-select-enable-primary t)
-(setq x-select-enable-clipboard t)
-(setq dired-recursive-deletes 'top)
-(setq ido-enable-flex-matching t)
-
-(put 'upcase-region 'disabled nil)
-(put 'downcase-region 'disabled nil)
-
-(setq default-major-mode 'text-mode)
-(setq-default tab-width 8)
-(setq-default indent-tabs-mode nil)
-(setq-default ispell-program-name "aspell")
-(setq-default grep-find-command "find . -type f | grep -v '.svn' | xargs grep -nH -e ")
 
 (require 'uniquify)
 (setq uniquify-buffer-name-style 'post-forward-angle-brackets)
@@ -145,9 +140,8 @@
                 ("\\.org$"  . org-mode))
               auto-mode-alist))
 
-;; Switch to *Python* after C-c C-c
-(defadvice python-send-buffer
-  (after advice-switch-to-python)
+(defadvice python-send-buffer (after advice-switch-to-python)
+  "Switch to *Python* after C-c C-c"
   (python-switch-to-python t))
 
 (add-hook
