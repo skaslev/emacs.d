@@ -30,6 +30,8 @@
 (global-set-key (kbd "C-c n") 'linum-mode)
 (global-set-key (kbd "C-c w") 'whitespace-mode)
 
+(windmove-default-keybindings)
+
 (defun swap-windows ()
   "If you have 2 windows, it swaps them."
   (interactive)
