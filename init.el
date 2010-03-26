@@ -144,6 +144,8 @@
   "Switch to *Python* after C-c C-c"
   (python-switch-to-python t))
 
+(on-windows (setq python-python-command "C:/Python26/python.exe"))
+
 (add-hook
  'text-mode-hook
  (lambda ()
