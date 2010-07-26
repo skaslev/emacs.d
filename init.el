@@ -19,7 +19,7 @@
   (require 'maxframe)
   (select-frame frame)
   (on-linux (set-frame-font "Inconsolata 19"))
-  (on-windows (set-frame-font "-*-Consolas-normal-r-*-*-22-*-*-*-c-*-*-iso8859-1"))
+  (on-windows (set-frame-font "-*-Consolas-normal-r-*-*-17-*-*-*-c-*-*-iso8859-1"))
   (maximize-frame))
 
 (add-hook 'after-make-frame-functions 'setup-frame)
@@ -126,7 +126,8 @@
 (autoload 'rib-mode "rib-mode" "RenderMan Interface Bytestream editing mode" t)
 
 (setq auto-mode-alist
-      (append '(("\\.go$"   . go-mode)
+      (append '(("\\.cl$"   . c-mode)
+                ("\\.go$"   . go-mode)
                 ("\\.cs$"   . c++-mode)
                 ("\\.cg$"   . cg-mode)
                 ("\\.hlsl$" . cg-mode)
