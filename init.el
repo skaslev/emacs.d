@@ -131,7 +131,7 @@
                 ("\\.cs$"   . c++-mode)
                 ("\\.cg$"   . cg-mode)
                 ("\\.hlsl$" . cg-mode)
-                ("\\.fxh?$" . cg-mode)
+                ("\\.f[xh]$" . cg-mode)
                 ("\\.o?sl$" . rsl-mode)
                 ("\\.rib$"  . rib-mode)
                 ("\\.ma$"   . mel-mode)
