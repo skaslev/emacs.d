@@ -60,7 +60,6 @@
 (setq-default ispell-program-name "aspell")
 (setq current-language-environment "Bulgarian")
 (setq default-input-method "bulgarian-phonetic")
-(setq-default grep-find-command "find . -type f | grep -v '.svn' | xargs grep -nH -e ")
 
 (global-set-key (kbd "C-+") 'text-scale-increase)
 (global-set-key (kbd "C-=") 'text-scale-increase)
