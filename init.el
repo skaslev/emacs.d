@@ -49,6 +49,7 @@
 (setq make-backup-files nil)
 (setq windmove-wrap-around t)
 (setq parens-require-spaces nil)
+(setq tab-always-indent 'complete)
 (setq x-select-enable-primary t)
 (setq x-select-enable-clipboard t)
 (setq dired-recursive-deletes 'top)
