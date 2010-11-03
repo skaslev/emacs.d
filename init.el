@@ -144,8 +144,6 @@
   "Switch to *Python* after C-c C-c"
   (python-switch-to-python t))
 
-(on-windows (setq python-python-command "C:/Python26/python.exe"))
-
 (add-hook
  'text-mode-hook
  (lambda ()
@@ -226,6 +224,11 @@
            'shell-strip-ctrl-m nil t)
  (add-hook 'comint-output-filter-functions
            'comint-watch-for-password-prompt nil t)
+ (defadvice grep-compute-defaults (around grep-compute-defaults-advice-null-device)
+   "Use cygwin's /dev/null as the null-device."
+   (let ((null-device "/dev/null"))
+     ad-do-it))
+ (ad-activate 'grep-compute-defaults)
  (setq shell-file-name "bash.exe")
  (setq explicit-shell-file-name "bash.exe"))
 
