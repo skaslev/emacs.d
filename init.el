@@ -136,17 +136,11 @@
                 ("\\.org$"   . org-mode))
               auto-mode-alist))
 
-(defadvice python-send-buffer (after advice-switch-to-python)
-  "Switch to *Python* after C-c C-c"
-  (python-switch-to-python t))
-
 (add-hook
  'text-mode-hook
  (lambda ()
    (flyspell-mode 1)
    (auto-fill-mode 1)))
-
-(add-hook 'shell-mode-hook (lambda () (ansi-color-for-comint-mode-on)))
 
 (add-hook
  'c-mode-hook
@@ -200,6 +194,11 @@
    (local-set-key (kbd "C-c C-z") 'etom-show-buffer)))
 
 (add-hook 'lua-mode-hook (lambda () (setq lua-indent-level 4)))
+(add-hook 'shell-mode-hook (lambda () (ansi-color-for-comint-mode-on)))
+
+(defadvice python-send-buffer (after advice-switch-to-python)
+  "Switch to *Python* after C-c C-c"
+  (python-switch-to-python t))
 
 (if on-windows
     (progn
