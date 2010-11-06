@@ -52,14 +52,12 @@
 (setq visible-bell nil)
 (setq bell-volume 0)
 (setq scroll-step 1)
-(setq case-fold-search t)
 (setq make-backup-files nil)
 (setq windmove-wrap-around t)
 (setq parens-require-spaces nil)
 (setq tab-always-indent 'complete)
 (setq x-select-enable-primary t)
 (setq x-select-enable-clipboard t)
-(setq dired-recursive-deletes 'top)
 (setq ido-enable-flex-matching t)
 (setq shell-file-name "bash")
 (setq explicit-shell-file-name "bash")
@@ -96,13 +94,6 @@
   (other-window 1))
 
 (global-set-key (kbd "C-c s") 'swap-windows)
-
-(defun toggle-fullscreen ()
-  (interactive)
-  (set-frame-parameter nil 'fullscreen
-                       (if (frame-parameter nil 'fullscreen) nil 'fullboth)))
-
-(global-set-key (kbd "<f11>") 'toggle-fullscreen)
 
 (require 'uniquify)
 (setq uniquify-buffer-name-style 'post-forward-angle-brackets)
