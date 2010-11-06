@@ -61,6 +61,8 @@
 (setq x-select-enable-clipboard t)
 (setq dired-recursive-deletes 'top)
 (setq ido-enable-flex-matching t)
+(setq shell-file-name "bash")
+(setq explicit-shell-file-name "bash")
 
 (setq default-major-mode 'text-mode)
 (setq-default tab-width 8)
@@ -241,14 +243,7 @@
      "Use cygwin's /dev/null as the null-device."
      (let ((null-device "/dev/null"))
        ad-do-it))
-   (ad-activate 'grep-compute-defaults)
-   (setq shell-file-name "bash.exe")
-   (setq explicit-shell-file-name "bash.exe")))
-
-(if-mac
- (progn
-   (setq shell-file-name "bash")
-   (setq explicit-shell-file-name "bash")))
+   (ad-activate 'grep-compute-defaults)))
 
 (server-start)
 
