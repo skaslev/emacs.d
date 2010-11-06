@@ -1,7 +1,6 @@
 (setq on-mac     (eq 'darwin system-type))
 (setq on-linux   (eq 'gnu/linux system-type))
 (setq on-windows (eq 'windows-nt system-type))
-
 (setq load-path
       (append load-path
               '("~/.emacs.d"
@@ -121,19 +120,19 @@
 (autoload 'rib-mode "rib-mode" "RenderMan Interface Bytestream editing mode" t)
 
 (setq auto-mode-alist
-      (append '(("\\.cl$"   . c-mode)
-                ("\\.go$"   . go-mode)
-                ("\\.cs$"   . c++-mode)
-                ("\\.cg$"   . cg-mode)
-                ("\\.hlsl$" . cg-mode)
+      (append '(("\\.cl$"    . c-mode)
+                ("\\.go$"    . go-mode)
+                ("\\.cs$"    . c++-mode)
+                ("\\.cg$"    . cg-mode)
+                ("\\.hlsl$"  . cg-mode)
                 ("\\.f[xh]$" . cg-mode)
-                ("\\.o?sl$" . rsl-mode)
-                ("\\.rib$"  . rib-mode)
-                ("\\.ma$"   . mel-mode)
-                ("\\.mel$"  . mel-mode)
-                ("\\.lua$"  . lua-mode)
-                ("\\.m$"    . mma-mode)
-                ("\\.org$"  . org-mode))
+                ("\\.o?sl$"  . rsl-mode)
+                ("\\.rib$"   . rib-mode)
+                ("\\.ma$"    . mel-mode)
+                ("\\.mel$"   . mel-mode)
+                ("\\.lua$"   . lua-mode)
+                ("\\.m$"     . mma-mode)
+                ("\\.org$"   . org-mode))
               auto-mode-alist))
 
 (defadvice python-send-buffer (after advice-switch-to-python)
