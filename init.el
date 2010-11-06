@@ -58,6 +58,7 @@
 
 (setq default-major-mode 'text-mode)
 (setq-default tab-width 8)
+(setq-default fill-column 80)
 (setq-default indent-tabs-mode nil)
 (setq-default ispell-program-name "aspell")
 (setq current-language-environment "Bulgarian")
@@ -143,19 +144,14 @@
  'text-mode-hook
  (lambda ()
    (flyspell-mode 1)
-   (auto-fill-mode 1)
-   (setq fill-column 80)))
+   (auto-fill-mode 1)))
 
-(add-hook
- 'shell-mode-hook
- (lambda ()
-   (ansi-color-for-comint-mode-on)))
+(add-hook 'shell-mode-hook (lambda () (ansi-color-for-comint-mode-on)))
 
 (add-hook
  'c-mode-hook
  (lambda ()
    (c-set-style "linux")
-   (setq tab-width 8)
    (setq indent-tabs-mode t)))
 
 (add-hook
@@ -188,7 +184,6 @@
 (add-hook
  'haskell-mode-hook
  (lambda ()
-   (setq tab-width 4)
    (turn-on-haskell-indent)
    (turn-on-haskell-doc-mode)
    (turn-on-haskell-decl-scan)))
@@ -204,12 +199,7 @@
    (local-set-key (kbd "C-c C-l") 'etom-send-buffer)
    (local-set-key (kbd "C-c C-z") 'etom-show-buffer)))
 
-(add-hook
- 'lua-mode-hook
- (lambda ()
-   (setq tab-width 4)
-   (setq indent-tabs-mode t)
-   (setq lua-indent-level 4)))
+(add-hook 'lua-mode-hook (lambda () (setq lua-indent-level 4)))
 
 (if on-windows
     (progn
