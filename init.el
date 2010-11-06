@@ -1,10 +1,11 @@
-(defmacro on-linux (&rest body)
-  (when (string-match "linux" (prin1-to-string system-type))
-    `(progn ,@body)))
+(defmacro if-mac (true &optional false)
+  (if (eq 'darwin system-type) true false))
 
-(defmacro on-windows (&rest body)
-  (when (string-match "windows" (prin1-to-string system-type))
-    `(progn ,@body)))
+(defmacro if-linux (true &optional false)
+  (if (eq 'gnu/linux system-type) true false))
+
+(defmacro if-windows (true &optional false)
+  (if (eq 'windows-nt system-type) true false))
 
 (setq load-path
       (append load-path
@@ -13,13 +14,19 @@
                 "~/.emacs.d/progmodes/haskell-mode-2.4"
                 "~/.emacs.d/color-theme-6.6.0")))
 
-(server-start)
+(if-mac
+ (defun maximize-frame ()
+   (interactive)
+   (set-frame-position (selected-frame) 0 0)
+   (set-frame-size (selected-frame) 1000 1000))
+ (require 'maxframe))
 
 (defun setup-frame (frame)
-  (require 'maxframe)
   (select-frame frame)
-  (on-linux (set-frame-font "Inconsolata 19"))
-  (on-windows (set-frame-font "-*-Consolas-normal-r-*-*-17-*-*-*-c-*-*-iso8859-1"))
+  (set-frame-parameter (selected-frame) 'alpha 90)
+  (if-mac (set-frame-font "Monaco 14"))
+  (if-linux (set-frame-font "Inconsolata 19"))
+  (if-windows (set-frame-font "-*-Consolas-normal-r-*-*-17-*-*-*-c-*-*-iso8859-1"))
   (maximize-frame))
 
 (add-hook 'after-make-frame-functions 'setup-frame)
@@ -27,7 +34,7 @@
 (remove-hook 'kill-buffer-query-functions 'server-kill-buffer-query-function)
 
 (ido-mode 1)
-(menu-bar-mode 0)
+(menu-bar-mode (if-mac 1 0))
 (tool-bar-mode 0)
 (scroll-bar-mode 0)
 (show-paren-mode 1)
@@ -42,7 +49,7 @@
 
 (fset 'yes-or-no-p 'y-or-n-p)
 (setq inhibit-startup-message t)
-(setq visible-bell t)
+(setq visible-bell nil)
 (setq bell-volume 0)
 (setq scroll-step 1)
 (setq case-fold-search t)
@@ -217,20 +224,32 @@
    (setq indent-tabs-mode t)
    (setq lua-indent-level 4)))
 
-;; Cygwin setup
-(on-windows
- (require 'cygwin-mount)
- (cygwin-mount-activate)
- (add-hook 'comint-output-filter-functions
-           'shell-strip-ctrl-m nil t)
- (add-hook 'comint-output-filter-functions
-           'comint-watch-for-password-prompt nil t)
- (defadvice grep-compute-defaults (around grep-compute-defaults-advice-null-device)
-   "Use cygwin's /dev/null as the null-device."
-   (let ((null-device "/dev/null"))
-     ad-do-it))
- (ad-activate 'grep-compute-defaults)
- (setq shell-file-name "bash.exe")
- (setq explicit-shell-file-name "bash.exe"))
+(if-windows
+ (progn
+   ;; Suppress the '~/.emacs.d/server is unsafe' error
+   (when (= emacs-major-version 23)
+     (require 'server)
+     (defun server-ensure-safe-dir (dir) "Noop" t))
+   ;; Cygwin setup
+   (require 'cygwin-mount)
+   (cygwin-mount-activate)
+   (add-hook 'comint-output-filter-functions
+             'shell-strip-ctrl-m nil t)
+   (add-hook 'comint-output-filter-functions
+             'comint-watch-for-password-prompt nil t)
+   (defadvice grep-compute-defaults (around grep-compute-defaults-advice-null-device)
+     "Use cygwin's /dev/null as the null-device."
+     (let ((null-device "/dev/null"))
+       ad-do-it))
+   (ad-activate 'grep-compute-defaults)
+   (setq shell-file-name "bash.exe")
+   (setq explicit-shell-file-name "bash.exe")))
+
+(if-mac
+ (progn
+   (setq shell-file-name "bash")
+   (setq explicit-shell-file-name "bash")))
+
+(server-start)
 
 (message "init.el loaded successfully.")
