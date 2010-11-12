@@ -17,9 +17,8 @@
 
 (defun setup-frame (frame)
   (select-frame frame)
-  (set-frame-parameter (selected-frame) 'alpha 90)
   (if on-mac (set-frame-font "Monaco 14"))
-  (if on-linux (set-frame-font "Inconsolata 19"))
+  (if on-linux (set-frame-font "Inconsolata 14"))
   (if on-windows (set-frame-font "-*-Consolas-normal-r-*-*-17-*-*-*-c-*-*-iso8859-1"))
   (maximize-frame))
 
