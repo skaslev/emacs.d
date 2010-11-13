@@ -22,9 +22,14 @@
   (if on-windows (set-frame-font "-*-Consolas-normal-r-*-*-17-*-*-*-c-*-*-iso8859-1"))
   (maximize-frame))
 
+(defun toggle-fullscreen ()
+  (interactive)
+  (set-frame-parameter nil 'fullscreen
+                       (if (frame-parameter nil 'fullscreen) nil 'fullboth)))
+
 (add-hook 'after-make-frame-functions 'setup-frame)
 (add-hook 'window-setup-hook (lambda () (setup-frame (selected-frame))))
-(remove-hook 'kill-buffer-query-functions 'server-kill-buffer-query-function)
+(global-set-key (kbd "<f11>") 'toggle-fullscreen)
 
 (ido-mode 1)
 (menu-bar-mode (if on-mac 1 0))
@@ -86,7 +91,6 @@
              (set-window-start w1 s2)
              (set-window-start w2 s1))))
   (other-window 1))
-
 (global-set-key (kbd "C-c s") 'swap-windows)
 
 (require 'uniquify)
@@ -219,5 +223,6 @@
       (ad-activate 'grep-compute-defaults)))
 
 (server-start)
+(remove-hook 'kill-buffer-query-functions 'server-kill-buffer-query-function)
 
 (message "init.el loaded successfully.")
