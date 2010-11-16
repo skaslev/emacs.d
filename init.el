@@ -46,6 +46,7 @@
 (windmove-default-keybindings)
 
 (fset 'yes-or-no-p 'y-or-n-p)
+(setq confirm-nonexistent-file-or-buffer nil)
 (setq inhibit-startup-message t)
 (setq visible-bell nil)
 (setq bell-volume 0)
@@ -57,8 +58,11 @@
 (setq x-select-enable-primary t)
 (setq x-select-enable-clipboard t)
 (setq ido-enable-flex-matching t)
+(setq ido-create-new-buffer 'always)
 (setq shell-file-name "bash")
 (setq explicit-shell-file-name "bash")
+(setq kill-buffer-query-functions
+      (remq 'process-kill-buffer-query-function kill-buffer-query-functions))
 
 (setq default-major-mode 'text-mode)
 (setq-default tab-width 8)
