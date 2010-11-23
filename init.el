@@ -106,7 +106,7 @@
 (global-set-key (kbd "M-p") 'pager-row-up)
 (global-set-key (kbd "M-n") 'pager-row-down)
 
-(require 'redo)
+(require 'redo+)
 (global-set-key (kbd "C-/") 'undo)
 (global-set-key (kbd "C-?") 'redo)
 
