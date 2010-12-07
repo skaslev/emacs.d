@@ -97,6 +97,8 @@
   (other-window 1))
 (global-set-key (kbd "C-c s") 'swap-windows)
 
+(require 'psvn)
+
 (require 'uniquify)
 (setq uniquify-buffer-name-style 'post-forward-angle-brackets)
 
